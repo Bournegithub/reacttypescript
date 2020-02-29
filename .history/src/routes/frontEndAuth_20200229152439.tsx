@@ -34,7 +34,7 @@ class FrontendAuth extends React.Component<IFEAProps>{
         if(targetRouterConfig && !targetRouterConfig.auth && !isLogin){
             const { component } = targetRouterConfig;
             if(pathname === '/') {
-                return <Redirect to='/home' />
+                return <LayoutProvider  layouts={layouts}><Redirect to='/home' /></LayoutProvider>
             } else {
                 return <LayoutProvider  layouts={layouts}><Route exact path={pathname} component={component} /></LayoutProvider>
             }
@@ -50,7 +50,8 @@ class FrontendAuth extends React.Component<IFEAProps>{
                     // 此处可做判断引用对应的的layout模版
                     // 此种写法可对Route增加自定义属性
                     // return <LayoutProvider location={this.props.location} layouts={layouts}><Route path={pathname} render={(props) => <targetRouterConfig.component example={example} {...props}/>}/></LayoutProvider>
-                    return <LayoutProvider  layouts={layouts}><Route path={pathname} component={targetRouterConfig.component} /></LayoutProvider>
+                    return <Route path={pathname} component={targetRouterConfig.component} />
+                    // return <LayoutProvider  layouts={layouts}><Route path={pathname} component={targetRouterConfig.component} /></LayoutProvider>
                 }else{
                     // 如果路由不合法，重定向到 404 页面
                     return <LayoutProvider  layouts={layouts}><Redirect to='/error' /></LayoutProvider>

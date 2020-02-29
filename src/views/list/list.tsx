@@ -1,9 +1,14 @@
 import React from 'react';
+import { Page, Section } from 'react-page-layout';
 import ListModel from './listModel';
 class ListPage extends React.Component{
     render() {
         return(
-            <div>listpage</div>
+            <Page layout="public">
+                <Section slot="main">
+                    <h1 className="aaaa">list页面</h1>
+                </Section>
+            </Page>
         )
     }
 }

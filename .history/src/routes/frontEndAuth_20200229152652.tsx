@@ -34,9 +34,9 @@ class FrontendAuth extends React.Component<IFEAProps>{
         if(targetRouterConfig && !targetRouterConfig.auth && !isLogin){
             const { component } = targetRouterConfig;
             if(pathname === '/') {
-                return <Redirect to='/home' />
+                return <LayoutProvider  layouts={layouts}> <Redirect to='/home' /></LayoutProvider>
             } else {
-                return <LayoutProvider  layouts={layouts}><Route exact path={pathname} component={component} /></LayoutProvider>
+                return <Route exact path={pathname} component={component} />
             }
         }
         if(isLogin) {
