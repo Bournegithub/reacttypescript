@@ -4,7 +4,8 @@ interface IUserState {
     phone: string,
     address: string,
     company: string,
-    avatar: string
+    avatar: string,
+    loginStatus: boolean,
 }
 // 记录当前用户登录信息
 const userState:IUserState = {
@@ -13,6 +14,7 @@ const userState:IUserState = {
     address: '',
     company: '',
     avatar: '',
+    loginStatus: false
 }
 export default function userInfo(state = userState, action:any) {
     switch (action.type) {
@@ -22,7 +24,8 @@ export default function userInfo(state = userState, action:any) {
                 phone: action.value ? action.value.phone : state.phone,
                 address: action.value ? action.value.address : state.address,
                 company: action.value ? action.value.company : state.company,
-                avatar: action.value ? action.value.avatar : state.avatar
+                avatar: action.value ? action.value.avatar : state.avatar,
+                loginStatus: action.value ? action.value.loginStatus: state.loginStatus
             };
         default:
             return state;

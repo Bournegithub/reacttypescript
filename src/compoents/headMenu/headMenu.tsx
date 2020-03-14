@@ -4,17 +4,27 @@ import menus from '../../routes/menus';
 import { Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 
-interface Imenus {
+interface IMenus {
     path: string,
     name: string,
     icon: string,
 }
-class HeadMenu extends React.Component{
-    state = {
-        current: 'home',
+interface IState {
+    current: string
+}
+class HeadMenu extends React.Component<any,IState>{
+    constructor(props:any){
+        super(props);
+        console.log('headmenu-props', props);
+
+        this.state = {
+            current: this.props.sendProps.location.pathname || 'home',
+        }
+        // console.log('headcustomer-state', this.state);
     }
 
-    renderMenu = (menus: Array<Imenus>) => {
+
+    renderMenu = (menus: Array<IMenus>) => {
         return menus.map((item, index) => {
             return <Menu.Item title={item.name} key={item.path}><Link to={item.path}><Icon type={item.icon}></Icon><span>{item.name}</span></Link></Menu.Item>
         })
