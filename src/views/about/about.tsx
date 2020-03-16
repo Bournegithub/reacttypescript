@@ -10,7 +10,7 @@ class AboutPage extends React.Component<any>{
         return(
             <Page layout="public" sendProps={this.props}>
                 <Section slot="main">
-                    <h1 className="aaaa">about页面</h1>
+                    <h1 className="aaaa">about页面 test gfw</h1>
                 </Section>
             </Page>
         )
